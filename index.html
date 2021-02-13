@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="readspeed" />
+    <meta property="og:description" content="Speed reads" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://readspeed.overlemon.com/img/share.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#19bbde" />
+    <meta name="theme-color" content="#19bbde" />
+    <title>alvolante</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="assets/js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/graphik.css" />
+  </head>
+  <body>
+    <noscript>
+      <strong>Lo sentimos, pero alvolante no funciona correctamente sin JavaScript habilitado. Por favor, activalo para continuar.</strong>
+    </noscript>
+    <div id="app">
+      <div class="reader">
+        <div id="word"></div>
+      </div>
+      <div class="paster">
+        <form id="pasteform">
+          <textarea id="paste">Los síntomas de una acidosis metabólica no son específicos, y el diagnóstico puede ser complicado a menos que el paciente presente indicaciones claras para el muestreo de gases en sangre arterial. Los síntomas incluyen el dolor de pecho, palpitaciones, dolor de cabeza, alteración del estado mental, incluyendo la ansiedad severa debido a hipoxia, disminución de la agudeza visual, náuseas, vómitos, dolor abdominal, alteración del apetito y pérdida de peso (a largo plazo), debilidad muscular y dolor de los huesos. Los que están en una situación de acidosis metabólica suelen presentar la respiración de Kussmaul, una respiración profunda, rápida, asociada con cetoacidosis diabética clásica. Las respiraciones rápidas y profundas aumentan la cantidad de dióxido de carbono exhalado, lo que conlleva a una reducción de los niveles de dióxido de carbono sérico, causando algún grado de compensación. La sobre-compensación por medio de una alcalosis respiratoria para producir alcalemia no ocurre. </textarea>
+          <input type="number" id="speed" step="0.1" value="0.5"/>
+          <select id="fx">
+            <option value="flipInX" selected>flipInX</option>
+            <option value="flipInY">flipInY</option>
+            <option value="flip">flip</option>
+            <option value="pulse">pulse</option>
+            <option value="flash">flash</option>
+            <option value="rubberBand">rubberBand</option>
+            <option value="shake">shake</option>
+            <option value="swing">swing</option>
+            <option value="tada">tada</option>
+            <option value="wobble">wobble</option>
+            <option value="bounceIn">bounceIn</option>
+            <option value="fadeInDown">fadeInDown</option>
+            <option value="fadeInLeft">fadeInLeft</option>
+            <option value="fadeInRight">fadeInRight</option>
+            <option value="fadeInUp">fadeInUp</option>
+            <option value="flipOutX">flipOutX</option>
+            <option value="flipOutY">flipOutY</option>
+            <option value="rotateIn">rotateIn</option>
+            <option value="rotateOut">rotateOut</option>
+            <option value="slideInDown">slideInDown</option>
+            <option value="hinge">hinge</option>
+            <option value="rollIn">rollIn</option>
+            <option value="fadeIn">fadeIn</option>
+          </select>
+          <button type="submit">Read</button>
+        </form>
+      </div>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
