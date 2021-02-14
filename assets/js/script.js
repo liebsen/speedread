@@ -33,17 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const read = () => {
 		const word = document.getElementById('word')
-		word.innerHTML = ''
 		const span = document.createElement('h1')
-		word.appendChild(span)
 		span.classList.add('animated', 'speed', fx)
+		word.innerHTML = ''
+		word.appendChild(span)
 		if (pos <= contents.length) {
 			span.textContent = contents[pos]
 			pos++
 		} else {
 			span.textContent = ''
 			pos = 0
-		}
-		
+		}		
 	}
 })
