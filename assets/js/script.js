@@ -1,24 +1,45 @@
+const c = e => {
+  return document.createElement(e)
+}
+
+const g = e => {
+  return document.getElementById(e)
+}
+
+const e = (a, e, f) => {
+  g(a).addEventListener(e, ev => {
+    f(ev)
+  })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	let contents = []
 	let pos = 0
-	let speed = document.getElementById('speed').value // secs
-	let clock = 0
-	let fx = document.getElementById('fx').value
+  let clock = 0
+	let speed = g('speed').value // secs
+  let mode = g('mode').value
+	let fx = g('fx').value
 
-	document.getElementById('speed').addEventListener('change', e => {
+  e('mode','change', e => {
+    e.preventDefault()
+    mode = e.target.value
+    cycle()
+  })
+
+	e('speed', 'change', e => {
 		e.preventDefault()
 		speed = e.target.value
 		cycle()
 	})
 
-	document.getElementById('fx').addEventListener('change', e => {
+	e('fx', 'change', e => {
 		e.preventDefault()
 		fx = e.target.value
 	})
 
-	document.getElementById('pasteform').addEventListener('submit', e => {
+	e('pasteform', 'submit', e => {
 		e.preventDefault()
-		let text = document.getElementById('paste').value
+		let text = g('paste').value
 		contents = text.split(' ')
 		cycle()
 		return false
@@ -32,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	const read = () => {
-		const word = document.getElementById('word')
-		const span = document.createElement('h1')
+		const word = g('word')
+		const span = c('h1')
 		span.classList.add('animated', 'speed', fx)
 		word.innerHTML = ''
 		word.appendChild(span)
