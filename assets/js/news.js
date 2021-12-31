@@ -3,7 +3,7 @@ let index = 0
 let pause = 0
 let interval = 0
 const progress = document.querySelector('.progress')
-const speed = 3
+const speed = 15
 progress.style.transitionDuration = speed + 's'
 
 let cycle = () => {
@@ -21,7 +21,7 @@ let cycle = () => {
   document.querySelector('.speedread').classList.add('fadeOut')
   setTimeout(() => {
     if (item) {
-      document.querySelector('.speedread').textContent = item.title
+      document.querySelector('.speedread').innerHTML = `${item.description}`
       document.querySelector('.speedread').classList.add('flipInX')
     }
   }, 1000)
@@ -40,12 +40,13 @@ let search = () => {
     clearInterval(interval)
   }
   $.get('fetch.php?type=' + document.getElementById('type').value + '&key=' + document.getElementById('key').value, function (data) {
-    $(data).find("item").each(function () { // or "item" or whatever suits your feed
+    $(data).find("item").each((i, e) => {
       items.push({
-        title: $(this).find("title").text(),
-        source: $(this).find("source").text(),
-        pubDate: $(this).find("pubDate").text(),
-        description: $(this).find("description").text()
+        title: $(e).find("title").text(),
+        source: $(e).find("source").text(),
+        link: $(e).find("link").text(),
+        pubDate: $(e).find("pubDate").text(),
+        description: $(e).find("description").text()
       })
     });
     interval = setInterval(cycle, speed * 1000)

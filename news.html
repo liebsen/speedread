@@ -17,23 +17,27 @@
   </head>
   <body>
     <div class="container flex flex-col">
-      <form onsubmit="return search()">
-        <select id="type">
-          <option value="language" selected>language</option>
-          <option value="geo">geo</option>
-          <option value="keyword">keyword</option>
-        </select>
-        <input id="key" placeholder="Search..." value="" />
-        <input type="submit" value="Search" />
-      </form>
-      <div class="read-container hidden">
-        <div class="progress"></div>
-        <div class="speedread animated f-2"></div>
-        <div class="flex justify-center">
+      <div class="flex justify-center">
+        <fieldset>
+          <form onsubmit="return search()">
+            <select id="type">
+              <option value="language" selected>language</option>
+              <option value="geo">geo</option>
+              <option value="keyword">keyword</option>
+            </select>
+            <input id="key" placeholder="Search..." value="" />
+            <input type="submit" value="Search" />
+          </form>
+        </fieldset>
+        <fieldset>
           <button onclick="index--;cycle()">Prev</button>
           <button onclick="pause=!pause">Pause</button>
           <button onclick="index++;cycle()">Next</button>
-        </div>
+        </fieldset>
+      </div>      
+      <div class="read-container hidden">
+        <div class="progress"></div>
+        <div class="speedread animated f-2"></div>
       </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
