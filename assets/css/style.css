@@ -1,19 +1,27 @@
 body {
 	padding: 0;
-	background-color: black;
-	color: white;
+	background-color: white;
+	color: #666;
 	font-family: 'Graphik 800';
+	overflow-x: hidden;
 }
 
 .f-3 {
 	font-size: 5rem;
 }
 
+.f-2 {
+	font-size: 2rem;
+}
+
+
 .speedread {
 	min-width: 100%;
-	background-color: rgba(255,255,255,0.5);
+	background-color: whitesmoke;
 	padding: 1rem;
 	opacity: 0;
+	margin-bottom: 1rem;
+	letter-spacing: -.1rem;
 }
 
 .speedread span {
@@ -27,4 +35,8 @@ body {
 	background-color: whitesmoke;
 	width: 0%;
 	transition: width 1s linear;
+}
+
+.hidden {
+	display: none;
 }

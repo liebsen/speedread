@@ -3,6 +3,7 @@ const e = (a, e, f) => {
     f(ev)
   })
 }
+const anims = ['bounce','flash','pulse','rubberBand','shake','swing','tada','wobble','bounceIn','bounceInDown','bounceInLeft','bounceInRight','bounceInUp','bounceOut','bounceOutDown','bounceOutLeft','bounceOutRight','bounceOutUp','fadeIn','fadeInDown','fadeInDownBig','fadeInLeft','fadeInLeftBig','fadeInRight','fadeInRightBig','fadeInUp','fadeInUpBig','fadeOut','fadeOutDown','fadeOutDownBig','fadeOutLeft','fadeOutLeftBig','fadeOutRight','fadeOutRightBig','fadeOutUp','fadeOutUpBig','flip','flipInX','flipInY','flipOutX','flipOutY','lightSpeedIn','lightSpeedOut','rotateIn','rotateInDownLeft','rotateInDownRight','rotateInUpLeft','rotateInUpRight','rotateOut','rotateOutDownLeft','rotateOutDownRight','rotateOutUpLeft','rotateOutUpRight','slideInDown','slideInLeft','slideInRight','slideOutLeft','slideOutRight','slideOutUp','hinge','rollIn','rollOut']
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.speedread').forEach(e => {
@@ -32,7 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
   	const read = () => {
   		const span = document.createElement('span')
       let p = 0
-  		span.classList.add('animated', 'speed', fx)
+      let anim = fx
+      if (anim === 'random') {
+        anim = anims[Math.floor(Math.random()*anims.length)]
+      }
+  		span.classList.add('animated', 'speed', anim)
   		e.innerHTML = ''
   		e.appendChild(span)
   		if (pos <= contents.length) {

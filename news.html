@@ -17,13 +17,26 @@
   </head>
   <body>
     <div class="container flex flex-col">
-      <div class="speedread f-3" length="3" fx="random">Ciudadanos de Brasil le dieron una paliza al alcalde de Toritama que exigió pasaportes de vacunas para comer y vacunas obligatorias para los niños. ⚡Símbolo de colisión
+      <form onsubmit="return search()">
+        <select id="type">
+          <option value="language" selected>language</option>
+          <option value="geo">geo</option>
+          <option value="keyword">keyword</option>
+        </select>
+        <input id="key" placeholder="Search..." value="" />
+        <input type="submit" value="Search" />
+      </form>
+      <div class="read-container hidden">
+        <div class="progress"></div>
+        <div class="speedread animated f-2"></div>
+        <div class="flex justify-center">
+          <button onclick="index--;cycle()">Prev</button>
+          <button onclick="pause=!pause">Pause</button>
+          <button onclick="index++;cycle()">Next</button>
+        </div>
       </div>
-      <!--div class="speedread f-3" length="3" fx="rollIn">"Most people are other people. Their thoughts are someone else's opinions, their lives a mimicry, their passions a quotation." ~ Oscar Wilde
-      </div>
-      <div class="speedread f-3" length="3" fx="flipInX">It amazes me that instead of being mad at their government, the media and the pharmaceutical companies over being lied to, some fools are mad at the rest of us for simply pointing out the fact that they’ve been lied to. SMH
-      </div-->
     </div>
-    <script src="assets/js/widget.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/news.js"></script>
   </body>
 </html>
