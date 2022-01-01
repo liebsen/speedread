@@ -21,6 +21,14 @@ input, select, button {
 .mr-1 {
 	margin-right: 0.25rem;
 }
+
+.updated {
+	font-size: 1rem;
+	color: #333;
+	text-align: right;
+	opacity: 0;
+}
+
 fieldset {
 	border: none;
 }
