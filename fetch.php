@@ -14,7 +14,7 @@ if ($type === 'geo') {
 
 $string = file_get_contents("${url}");
 if($string === FALSE) {
-  echo "Could not read the file.";
+  echo "error";
 } else {
   echo $string;
 }

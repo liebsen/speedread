@@ -18,6 +18,9 @@ input, select, button {
 	font-size: 2rem;
 }
 
+.mr-1 {
+	margin-right: 0.25rem;
+}
 fieldset {
 	border: none;
 }
@@ -88,52 +91,57 @@ textarea {
 	text-decoration: none;
 }
 
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
-	input[type="tel"],
-	input[type="search"],
-	input[type="url"],
-	select {
-		height: 2.75rem;
-	}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="url"],
+select {
+	height: 2.75rem;
+}
 
-	textarea {
-		padding: 0.75rem 1rem;
-	}
+textarea {
+	padding: 0.75rem 1rem;
+}
 
-	input[type="checkbox"],
-	input[type="radio"] {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		display: block;
-		float: left;
-		margin-right: -2rem;
-		opacity: 0;
-		width: 1rem;
-		z-index: -1;
-	}
-	select {
-		background-size: 1.25rem;
-		background-repeat: no-repeat;
-		background-position: calc(100% - 1rem) center;
-		height: 2.75rem;
-		padding-right: 2.75rem;
-		text-overflow: ellipsis;
-	}
+input[type="checkbox"],
+input[type="radio"] {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	display: block;
+	float: left;
+	margin-right: -2rem;
+	opacity: 0;
+	width: 1rem;
+	z-index: -1;
+}
+select {
+	background-size: 1.25rem;
+	background-repeat: no-repeat;
+	background-position: calc(100% - 1rem) center;
+	height: 3.4em;
+	line-height: 3.4em;
+	padding-right: 2.75rem;
+	text-overflow: ellipsis;
+}
 
-		select:focus::-ms-value {
-			background-color: transparent;
-		}
+select:focus::-ms-value {
+	background-color: transparent;
+}
 
-		select::-ms-expand {
-			display: none;
-		}
-		
+select::-ms-expand {
+	display: none;
+}
+
 .container {
 	max-width: 100%!important;
+}
+
+.read-container {
+	cursor: pointer;
 }
 
 .speedread {
