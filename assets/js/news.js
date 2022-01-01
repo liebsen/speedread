@@ -4,9 +4,9 @@ let pause = 0
 let interval = 0
 const progress = document.querySelector('.progress')
 const speed = 15
-progress.style.transitionDuration = speed + 's'
 
 let cycle = () => {
+  progress.style.transitionDuration = speed + 's'
   if (pause) {
     return false
   }
@@ -14,15 +14,16 @@ let cycle = () => {
     index = 0
   }
   if (index > items.length - 1) {
-    index = 0
+    return search()
   }
   const item = items[index]
-  document.querySelector('.speedread').classList.remove('flipInX', 'fadeOut')
-  document.querySelector('.speedread').classList.add('fadeOut')
+  document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
+  document.querySelector('.speedread').classList.add('fadeOutLeft')
   setTimeout(() => {
     if (item) {
+      document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
       document.querySelector('.speedread').innerHTML = `${item.description}`
-      document.querySelector('.speedread').classList.add('flipInX')
+      document.querySelector('.speedread').classList.add('fadeInRight')
     }
   }, 1000)
   index++
@@ -31,8 +32,11 @@ let cycle = () => {
 }
 
 let search = () => {
-  document.querySelector('.speedread').classList.add('fadeOut')
+  progress.style.transitionDuration = '0s'
   document.querySelector('.read-container').classList.remove('hidden')
+  document.querySelector('.speedread').innerHTML = 'Fetching news...'
+  document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
+  document.querySelector('.speedread').classList.add('fadeIn')
   items = []
   index = 0
   progress.style.width = '0%'
