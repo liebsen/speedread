@@ -1,0 +1,19 @@
+{
+    "name": "liebsen/speedread",
+    "description": "Speed News",
+    "type": "project",
+    "keywords": [
+        "news",
+        "reader"
+    ],
+    "homepage": "https://speednewz.herokuapp.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Free",
+            "email": "martin@devmeta.net",
+            "homepage": "https://www.devmeta.net/",
+            "role": "Developer"
+        }
+    ]
+}
