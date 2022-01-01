@@ -1,7 +1,7 @@
 body {
 	padding: 0;
-	background-color: white;
-	color: #666;
+	background-color: black;
+	color: whitesmoke;
 	font-family: 'Graphik 800';
 	overflow-x: hidden;
 }
@@ -20,7 +20,7 @@ fieldset {
 
 .speedread {
 	min-width: 100%;
-	background-color: whitesmoke;
+	background-color: #333;
 	padding: 1rem;
 	opacity: 0;
 	margin-bottom: 1rem;
@@ -34,13 +34,13 @@ fieldset {
 }
 
 .speedread a {
-	color: #666;
+	color: whitesmoke;
 	text-decoration: none;
 }
 
 .progress {
 	height: 5px;
-	background-color: whitesmoke;
+	background-color: #333;
 	width: 0%;
 	transition: width 1s linear;
 }
