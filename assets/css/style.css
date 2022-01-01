@@ -130,8 +130,8 @@ select {
 	background-size: 1.25rem;
 	background-repeat: no-repeat;
 	background-position: calc(100% - 1rem) center;
-	height: 3.4em;
-	line-height: 3.4em;
+	height: 3.5em;
+	line-height: 3.5em;
 	padding-right: 2.75rem;
 	text-overflow: ellipsis;
 }

@@ -105,7 +105,8 @@ let updateInt = 0
 let updateLast = 0
 let updateTime = () => {
   updateLast = new Date()
-  document.querySelector('.updated').classList.add('fadeIn', 'delay3')
+  document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
+  document.querySelector('.updated').classList.add('fadeIn', 'delay60')
   if (updateInt) {
     clearInterval(updateInt)
   }
