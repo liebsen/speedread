@@ -2,14 +2,28 @@
 
 $key = strtolower($_GET['key']);
 $type = strtolower($_GET['type']);
+$source = strtolower($_GET['source']);
+
 $user_pref_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
 
-$url = "https://news.google.com/rss?hl=${user_pref_langs}";
+if ($source === 'google') {
+  $url = "https://news.google.com/rss?hl=${user_pref_langs}";
+} else if ($source === 'bing') {
+  $url = "https://www.bing.com/news/results.aspx?setLang=${user_pref_langs}&q=${key}&format=rss";
+}
 
 if ($type === 'geo') {
-  $url = "https://news.google.com/news/rss/headlines/section/geo/${key}";
+  if ($source === 'google') {
+    $url = "https://news.google.com/news/rss/headlines/section/geo/${key}";
+  } else if ($source === 'bing') {
+    $url = "https://www.bing.com/news/results.aspx?q=${key}&format=rss";
+  }
 } else if ($type === 'keyword') {
-  $url = "https://news.google.com/rss/search?q=${key}";
+  if ($source === 'google') {
+    $url = "https://news.google.com/rss/search?q=${key}&hl=${user_pref_langs}";
+  } else if ($source === 'bing') {
+    $url = "https://www.bing.com/news/results.aspx?q=${key}&format=rss";
+  }
 }
 
 $string = file_get_contents("${url}");

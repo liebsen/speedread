@@ -126,6 +126,7 @@ input[type="radio"] {
 	width: 1rem;
 	z-index: -1;
 }
+
 select {
 	background-size: 1.25rem;
 	background-repeat: no-repeat;
@@ -160,6 +161,11 @@ select::-ms-expand {
 	letter-spacing: -.05rem;
 }
 
+.speedread ol, .speedread ul {
+	padding: 1rem;
+	margin: 0;
+}
+
 .speedread span {
 	display: inline-block;
 	width: 100%;
@@ -180,4 +186,10 @@ select::-ms-expand {
 
 .hidden {
 	display: none;
+}
+
+@media (min-width: 960px) {
+	.speedread {
+		font-size: 5rem;
+	}
 }

@@ -20,24 +20,28 @@
       <div class="controls flex justify-center animated">
         <fieldset>
           <form onsubmit="return search()" class="flex">
-            <select id="type" class="mr-1">
+            <!--select id="source" class="mr-1" title="Source">
+              <option value="google" selected>Google</option>
+              <option value="bing">Bing</option>
+            </select-->
+            <select id="type" class="mr-1" title="Type" style="width: 100px;">
               <option value="language" selected>language</option>
               <option value="geo">geo</option>
               <option value="keyword">keyword</option>
             </select>
-            <input id="key" class="mr-1" type="text" placeholder="Search..." value="" />
-            <input type="submit" value="Search" />
+            <input size=8 id="key" class="mr-1" type="text" placeholder="Search..." value="" title="Keyword" />
+            <input type="submit" value="🔎" />
           </form>
         </fieldset>
-        <fieldset>
+        <!--fieldset>
           <button onclick="index-=2;cycle()">Prev</button>
           <button onclick="pause=!pause">Pause</button>
           <button onclick="cycle()">Next</button>
-        </fieldset>
+        </fieldset-->
       </div>      
-      <div class="read-container animated fadeIn hidden">
+      <div class="read-container animated fadeIn hidden" id="gestureZone">
         <div class="progress"></div>
-        <div class="speedread animated f-2" onmouseover="pause=1" onmouseout="pause=0"></div>
+        <div class="speedread animated" onmouseover="pause=1" onmouseout="pause=0"></div>
         <div class="updated animated">
           Updated <span class="updated-time"></span>
         </div>
@@ -45,6 +49,8 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/swipe.js"></script>
+    <script src="assets/js/keys.js"></script>
     <script src="assets/js/news.js"></script>
   </body>
 </html>

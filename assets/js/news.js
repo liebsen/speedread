@@ -49,11 +49,15 @@ let cycle = () => {
   const item = items[index]
   document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
   document.querySelector('.speedread').classList.add('fadeOutLeft')
+  document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
+  document.querySelector('.updated').classList.add('fadeOut')
   setTimeout(() => {
     if (item) {
       document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
       document.querySelector('.speedread').innerHTML = `${item.description}`
       document.querySelector('.speedread').classList.add('fadeInRight')
+      document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
+      document.querySelector('.updated').classList.add('fadeIn')
     }
   }, 1000)
   index++
@@ -62,7 +66,10 @@ let cycle = () => {
 }
 
 let search = () => {
-  progress.style.transitionDuration = '0s'
+  const source = 'google'
+  // const source = document.getElementById('source').value || 'google'
+  const type = document.getElementById('type').value || 'language'
+  const key = document.getElementById('key').value || ''
   document.querySelector('.read-container').classList.remove('hidden')
   document.querySelector('.speedread').innerHTML = 'Fetching news...'
   document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
@@ -70,11 +77,12 @@ let search = () => {
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   document.querySelector('.updated').classList.add('fadeOut')
   index = 0
+  progress.style.transitionDuration = '0s'
   progress.style.width = '0%'
   if (interval) {
     clearInterval(interval)
   }
-  $.get('fetch.php?type=' + document.getElementById('type').value + '&key=' + document.getElementById('key').value, function (data) {
+  $.get(`fetch.php?source=${source}&type=${type}&key=${key}`, function (data) {
     if (data === 'error') {
       document.querySelector('.speedread').innerHTML = 'Fetch failed. Click search to try again.'
     } else {
@@ -106,7 +114,7 @@ let updateLast = 0
 let updateTime = () => {
   updateLast = new Date()
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
-  document.querySelector('.updated').classList.add('fadeIn', 'delay60')
+  document.querySelector('.updated').classList.add('fadeIn', 'delay5')
   if (updateInt) {
     clearInterval(updateInt)
   }
