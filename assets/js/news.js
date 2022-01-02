@@ -37,7 +37,7 @@ let playsound = (sound, vol) => {
 
 let cycle = () => {
   progress.style.transitionDuration = speed + 's'
-  if (pause) {
+  if (index && pause) {
     return false
   }
   if (index < 0) {

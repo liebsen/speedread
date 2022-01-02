@@ -161,6 +161,10 @@ select::-ms-expand {
 	letter-spacing: -.05rem;
 }
 
+.speedread ol {
+	margin: 0;
+}
+
 .speedread li {
 	margin-bottom: 1rem;
 }
