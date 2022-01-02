@@ -113,13 +113,11 @@ let updateInt = 0
 let updateLast = 0
 let updateTime = () => {
   updateLast = new Date()
-  document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
-  document.querySelector('.updated').classList.add('fadeIn', 'delay5')
   if (updateInt) {
     clearInterval(updateInt)
   }
   updateInt = setInterval(() => {
-    document.querySelector('.updated-time').textContent = moment(updateLast).fromNow()
+    document.querySelector('.updated').textContent = 'Updated ' + moment(updateLast).fromNow()
   }, 1000 * 60)
 }
 document.addEventListener('DOMContentLoaded', () => {
@@ -138,23 +136,3 @@ document.addEventListener('DOMContentLoaded', () => {
   search()
 })
 
-document.onkeydown = checkKey;
-
-function checkKey(e) {
-  e = e || window.event;
-
-  if (e.keyCode == '38') {
-    // up arrow
-  }
-  else if (e.keyCode == '40') {
-    // down arrow
-  }
-  else if (e.keyCode == '37') {
-    // left arrow
-    index-=2
-    cycle()
-  }
-  else if (e.keyCode == '39') {
-    cycle()
-  }
-}

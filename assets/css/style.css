@@ -10,25 +10,6 @@ input, select, button {
 	font-family: 'Graphik 800';
 }
 
-.f-3 {
-	font-size: 5rem;
-}
-
-.f-2 {
-	font-size: 2rem;
-}
-
-.mr-1 {
-	margin-right: 0.25rem;
-}
-
-.updated {
-	font-size: 1rem;
-	color: #333;
-	text-align: right;
-	opacity: 0;
-}
-
 fieldset {
 	border: none;
 }
@@ -149,6 +130,25 @@ select::-ms-expand {
 	max-width: 100%!important;
 }
 
+.f-3 {
+	font-size: 5rem;
+}
+
+.f-2 {
+	font-size: 2rem;
+}
+
+.mr-1 {
+	margin-right: 0.25rem;
+}
+
+.updated {
+	font-size: 1rem;
+	color: #666;
+	text-align: right;
+	opacity: 0;
+}
+
 .read-container {
 	cursor: pointer;
 }
@@ -161,11 +161,9 @@ select::-ms-expand {
 	letter-spacing: -.05rem;
 }
 
-.speedread ol, .speedread ul {
-	padding: 1rem;
-	margin: 0;
+.speedread li {
+	margin-bottom: 1rem;
 }
-
 .speedread span {
 	display: inline-block;
 	width: 100%;
@@ -190,6 +188,6 @@ select::-ms-expand {
 
 @media (min-width: 960px) {
 	.speedread {
-		font-size: 5rem;
+		font-size: 2rem;
 	}
 }
