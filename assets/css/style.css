@@ -14,8 +14,8 @@ fieldset {
 	border: none;
 }
 input::-moz-focus-inner {
-border: 0;
-padding: 0;
+	border: 0;
+	padding: 0;
 }
 
 input, select, textarea {
@@ -126,6 +126,10 @@ select::-ms-expand {
 	display: none;
 }
 
+.icon {
+	font-family:"Font Awesome";
+}
+
 .container {
 	max-width: 100%!important;
 }
@@ -159,6 +163,7 @@ select::-ms-expand {
 	opacity: 0;
 	margin-bottom: 1rem;
 	letter-spacing: -.05rem;
+	border-radius: 4px;
 }
 
 .speedread ol {
@@ -181,9 +186,25 @@ select::-ms-expand {
 
 .progress {
 	height: 5px;
-	background-color: #333;
+	background-color: magenta;
 	width: 0%;
 	transition: width 1s linear;
+	border-radius: 4px;
+	position: relative;
+	top: -0.25rem;
+}
+
+.icon {
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon svg {
+	width: 32px;
+	height: 32px;
 }
 
 .hidden {
