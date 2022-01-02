@@ -184,14 +184,32 @@ select::-ms-expand {
 	text-decoration: none;
 }
 
+.progress-container {
+	height: 5px;
+	position: relative;
+	top: -0.25rem;
+}
+
+.progress-item {
+	flex: 1;
+	height: 5px;
+	background-color: #333;
+	border-radius: 4px;
+	margin: 0 1px;
+}
+
 .progress {
+	opacity: 0;
 	height: 5px;
 	background-color: magenta;
 	width: 0%;
-	transition: width 1s linear;
 	border-radius: 4px;
-	position: relative;
-	top: -0.25rem;
+	transition: width 1s linear;
+}
+
+.progress.active {
+	opacity: 1;
+	width: 100%;
 }
 
 .icon {

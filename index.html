@@ -19,7 +19,7 @@
     <div class="container flex flex-col">
       <div class="controls flex justify-center animated">
         <fieldset>
-          <form onsubmit="return search()" class="flex">
+          <form onsubmit="return search()" class="flex searchform">
             <!--select id="source" class="mr-1" title="Source">
               <option value="google" selected>Google</option>
               <option value="bing">Bing</option>
@@ -50,7 +50,7 @@
         </fieldset-->
       </div>      
       <div class="read-container animated fadeIn hidden" id="gestureZone">
-        <div class="progress"></div>
+        <div class="progress-container flex justify-center items-center flex-row"></div>
         <div class="speedread animated" onmouseover="pause=1" onmouseout="pause=0"></div>
         <div class="updated animated"></div>
       </div>

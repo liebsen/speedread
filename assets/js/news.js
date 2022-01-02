@@ -2,9 +2,8 @@ let items = []
 let index = 0
 let pause = 0
 let interval = 0
-const progress = document.querySelector('.progress')
+const progressContainer = document.querySelector('.progress-container')
 const speed = 15
-
 
 let playsound = (sound, vol) => {
 
@@ -33,10 +32,12 @@ let playsound = (sound, vol) => {
     }
   }
 }
-
+let cycleInt = 0
 
 let cycle = () => {
-  progress.style.transitionDuration = speed + 's'
+  if (cycleInt) {
+    clearInterval(cycleInt)
+  }
   if (index && pause) {
     return false
   }
@@ -46,23 +47,27 @@ let cycle = () => {
   if (index > items.length - 1) {
     return search()
   }
+  for (var i=index;i<=items.length;i++) {
+    document.querySelector('.progress.item-' + i).classList.remove('active')  
+  }
   const item = items[index]
   document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
   document.querySelector('.speedread').classList.add('fadeOutLeft')
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   document.querySelector('.updated').classList.add('fadeOut')
-  setTimeout(() => {
+  cycleInt = setTimeout(() => {
     if (item) {
+      document.querySelector('.progress.item-' + index).style.transitionDuration = speed + 's'
+      document.querySelector('.progress.item-' + index).classList.add('active')
+
       document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
       document.querySelector('.speedread').innerHTML = `${item.description}`
       document.querySelector('.speedread').classList.add('fadeInRight')
       document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
       document.querySelector('.updated').classList.add('fadeIn')
+      index++
     }
-  }, 1000)
-  index++
-  const perc = parseFloat(index / items.length) * 100
-  progress.style.width = perc + '%'
+  }, 1000)  
 }
 
 let search = () => {
@@ -70,6 +75,7 @@ let search = () => {
   // const source = document.getElementById('source').value || 'google'
   const type = document.getElementById('type').value || 'language'
   const key = document.getElementById('key').value || ''
+  document.querySelector('.progress-container').innerHTML = ''
   document.querySelector('.read-container').classList.remove('hidden')
   document.querySelector('.speedread').innerHTML = 'Fetching news...'
   document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
@@ -77,14 +83,12 @@ let search = () => {
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   document.querySelector('.updated').classList.add('fadeOut')
   index = 0
-  progress.style.transitionDuration = '0s'
-  progress.style.width = '0%'
   if (interval) {
     clearInterval(interval)
   }
   $.get(`fetch.php?source=${source}&type=${type}&key=${key}`, function (data) {
     if (data === 'error') {
-      document.querySelector('.speedread').innerHTML = 'Fetch failed. Click search to try again.'
+      document.querySelector('.speedread').innerHTML = `Fetch failed. <a href="javascript:document.querySelector('.searchform').submit()">Try again</a>.`
     } else {
       items = []
       $(data).find("item").each((i, e) => {
@@ -97,10 +101,11 @@ let search = () => {
         })
       })
       if (!items.length) {
-        document.querySelector('.speedread').innerHTML = 'No results for this search. Click search to try again.'
+        document.querySelector('.speedread').innerHTML = 'No results for this search. Try again with another keyword.'
       } else {
         playsound('updated.mp3')
         updateTime()
+        progressItems()
         interval = setInterval(cycle, speed * 1000)
         cycle()
       }
@@ -120,9 +125,14 @@ let updateTime = () => {
     document.querySelector('.updated').textContent = 'Updated ' + moment(updateLast).fromNow()
   }, 1000 * 60)
 }
+let progressItems = () => {
+  for(var i =0; i <= items.length; i++) {
+    document.querySelector('.progress-container').innerHTML+=`<div class="progress-item" onclick="index=${i};cycle()"><div class="progress item-${i}"></div></div>`
+  }
+}
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.controls').classList.add('fadeInDown')
-  document.querySelector('.read-container').addEventListener('click', e => {
+  document.querySelector('.speedread').addEventListener('click', e => {
     document.querySelector('.controls').classList.toggle('fadeInDown')
     document.querySelector('.controls').classList.toggle('fadeOutUp')
     let int = 1

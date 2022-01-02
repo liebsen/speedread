@@ -1,6 +1,6 @@
 <?php 
 
-$key = strtolower($_GET['key']);
+$key = urlencode(strtolower($_GET['key']));
 $type = strtolower($_GET['type']);
 $source = strtolower($_GET['source']);
 
