@@ -10,11 +10,10 @@ function checkKey(e) {
     // down arrow
   }
   else if (e.keyCode == '37') {
+    prevRead()
     // left arrow
-    index-=2
-    cycle()
   }
   else if (e.keyCode == '39') {
-    cycle()
+    nextRead()
   }
 }

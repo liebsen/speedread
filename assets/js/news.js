@@ -88,7 +88,12 @@ let search = () => {
   }
   $.get(`fetch.php?source=${source}&type=${type}&key=${key}`, function (data) {
     if (data === 'error') {
-      document.querySelector('.speedread').innerHTML = `Fetch failed. <a href="javascript:document.querySelector('.searchform').submit()">Try again</a>.`
+      if (items.length) {
+        playsound('error.mp3')
+        startCycle()
+      } else {
+        document.querySelector('.speedread').innerHTML = `Fetch failed. <a href="javascript:document.querySelector('.searchform').submit()">Try again</a>.`
+      }
     } else {
       items = []
       $(data).find("item").each((i, e) => {
@@ -105,15 +110,33 @@ let search = () => {
       } else {
         playsound('updated.mp3')
         updateLast = new Date()
-        progressItems()
-        interval = setInterval(cycle, speed * 1000)
-        cycle()
+        startCycle()
       }
     }
   })
   return false
 }
 
+let prevRead = () => {
+  let p = pause
+  pause = 0
+  index-=2
+  cycle()
+  pause = p
+}
+
+let nextRead = () => {
+  let p = pause
+  pause = 0
+  cycle()
+  pause = p
+}
+
+let startCycle = () => {
+  progressItems()
+  interval = setInterval(cycle, speed * 1000)
+  cycle()
+}
 
 let progressItems = () => {
   for(var i =0; i <= items.length - 1; i++) {
