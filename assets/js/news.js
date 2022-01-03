@@ -88,8 +88,8 @@ let search = () => {
   }
   $.get(`fetch.php?source=${source}&type=${type}&key=${key}`, function (data) {
     if (data === 'error') {
+      playsound('error.mp3')
       if (items.length) {
-        playsound('error.mp3')
         startCycle()
       } else {
         document.querySelector('.speedread').innerHTML = `Fetch failed. <a href="javascript:document.querySelector('.searchform').submit()">Try again</a>.`
