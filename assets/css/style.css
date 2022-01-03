@@ -147,7 +147,6 @@ select::-ms-expand {
 }
 
 .updated {
-	font-size: 1rem;
 	color: #666;
 	text-align: right;
 	opacity: 0;
@@ -155,9 +154,12 @@ select::-ms-expand {
 
 .read-container {
 	cursor: pointer;
+	padding-top: 0.25rem;
+	overflow-x: hidden;
 }
 
 .speedread {
+	font-size: 1.25rem;
 	background-color: #333;
 	padding: 1rem;
 	opacity: 0;
@@ -169,7 +171,6 @@ select::-ms-expand {
 .speedread ol {
 	margin: 0;
 }
-
 .speedread li {
 	margin-bottom: 1rem;
 }
@@ -204,7 +205,7 @@ select::-ms-expand {
 	background-color: magenta;
 	width: 0%;
 	border-radius: 4px;
-	transition: width 1s linear;
+	transition: width 15s linear;
 }
 
 .progress.active {
@@ -232,5 +233,10 @@ select::-ms-expand {
 @media (min-width: 960px) {
 	.speedread {
 		font-size: 2rem;
+	}
+}
+@media (max-width: 960px) {
+	.speedread ol {
+		padding-left: 0.75rem;
 	}
 }

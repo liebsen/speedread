@@ -21,13 +21,8 @@ let playsound = (sound, vol) => {
   if (sound) {
     var playPromise = soundObj.play()
     if (playPromise !== undefined) {
-      playPromise.then(_ => {
-        // Automatic playback started!
-        // Show playing UI.
-      }).catch(error => {
+      playPromise.then(_ => {}).catch(error => {
         console.log(error)
-      // Auto-play was prevented
-      // Show paused UI.
       })
     }
   }
@@ -47,8 +42,14 @@ let cycle = () => {
   if (index > items.length - 1) {
     return search()
   }
-  for (var i=index;i<=items.length;i++) {
-    document.querySelector('.progress.item-' + i).classList.remove('active')  
+
+  for (var i=0;i<items.length;i++) {
+    if (i===index) {
+    } else if (i > index) {
+      document.querySelector('.progress.item-' + i).classList.remove('active') 
+    } else {
+      document.querySelector('.progress.item-' + i).classList.add('active') 
+    }
   }
   const item = items[index]
   document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
@@ -57,9 +58,7 @@ let cycle = () => {
   document.querySelector('.updated').classList.add('fadeOut')
   cycleInt = setTimeout(() => {
     if (item) {
-      document.querySelector('.progress.item-' + index).style.transitionDuration = speed + 's'
       document.querySelector('.progress.item-' + index).classList.add('active')
-
       document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
       document.querySelector('.speedread').innerHTML = `${item.description}`
       document.querySelector('.speedread').classList.add('fadeInRight')
