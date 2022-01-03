@@ -4,6 +4,7 @@ let pause = 0
 let interval = 0
 const progressContainer = document.querySelector('.progress-container')
 const speed = 15
+let updateLast = new Date()
 
 let playsound = (sound, vol) => {
 
@@ -43,27 +44,25 @@ let cycle = () => {
     return search()
   }
 
-  for (var i=0;i<items.length;i++) {
-    if (i===index) {
-    } else if (i > index) {
-      document.querySelector('.progress.item-' + i).classList.remove('active') 
-    } else {
-      document.querySelector('.progress.item-' + i).classList.add('active') 
-    }
-  }
   const item = items[index]
   document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
   document.querySelector('.speedread').classList.add('fadeOutLeft')
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   document.querySelector('.updated').classList.add('fadeOut')
   cycleInt = setTimeout(() => {
-    if (item) {
-      document.querySelector('.progress.item-' + index).classList.add('active')
+    if (item) {      
       document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
       document.querySelector('.speedread').innerHTML = `${item.description}`
       document.querySelector('.speedread').classList.add('fadeInRight')
       document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
       document.querySelector('.updated').classList.add('fadeIn')
+      document.querySelectorAll('.progress').forEach(e => {
+        e.classList.remove('active', 'actived')
+      })
+      for (var i=0;i<index;i++) {
+        document.querySelector('.progress.item-' + i).classList.add('actived')
+      }
+      document.querySelector('.progress.item-' + index).classList.add('active')
       index++
     }
   }, 1000)  
@@ -103,7 +102,7 @@ let search = () => {
         document.querySelector('.speedread').innerHTML = 'No results for this search. Try again with another keyword.'
       } else {
         playsound('updated.mp3')
-        updateTime()
+        updateLast = new Date()
         progressItems()
         interval = setInterval(cycle, speed * 1000)
         cycle()
@@ -113,19 +112,9 @@ let search = () => {
   return false
 }
 
-let updateInt = 0
-let updateLast = 0
-let updateTime = () => {
-  updateLast = new Date()
-  if (updateInt) {
-    clearInterval(updateInt)
-  }
-  updateInt = setInterval(() => {
-    document.querySelector('.updated').textContent = 'Updated ' + moment(updateLast).fromNow()
-  }, 1000 * 60)
-}
+
 let progressItems = () => {
-  for(var i =0; i <= items.length; i++) {
+  for(var i =0; i <= items.length - 1; i++) {
     document.querySelector('.progress-container').innerHTML+=`<div class="progress-item" onclick="index=${i};cycle()"><div class="progress item-${i}"></div></div>`
   }
 }
@@ -141,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       document.querySelector('.controls').classList.toggle('hidden')
     }, int)
+    setInterval(() => {
+      document.querySelector('.updated').textContent = 'Updated ' + moment(updateLast).fromNow()
+    }, 1000 * 60)
   })
   search()
 })

@@ -11,6 +11,7 @@ $gl = strtoupper($user_pref_langs2[1]);
 
 if ($source === 'google') {
   $url = "https://news.google.com/rss?hl=${hl}&gl=${gl}&ceid=${gl}:${hl}";
+  // $url = "dummy.xml";
 } else if ($source === 'bing') {
   $url = "https://www.bing.com/news/results.aspx?setLang=${user_pref_langs}&q=${key}&format=rss";
 }
