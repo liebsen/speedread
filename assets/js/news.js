@@ -49,6 +49,9 @@ let cycle = () => {
   document.querySelector('.speedread').classList.add('fadeOutLeft')
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   document.querySelector('.updated').classList.add('fadeOut')
+  if (index) {
+    document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
+  }
   cycleInt = setTimeout(() => {
     if (item) {      
       document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
@@ -62,9 +65,6 @@ let cycle = () => {
         document.querySelector('.progress.item-' + i).classList.add('actived')
       }
       document.querySelector('.progress.item-' + index).classList.add('active')
-      if (index) {
-        document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
-      }
       index++
     }
   }, 1000)  

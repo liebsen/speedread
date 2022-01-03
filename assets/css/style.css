@@ -150,6 +150,7 @@ select::-ms-expand {
 	color: #666;
 	text-align: right;
 	opacity: 0;
+	padding-right: 0.25rem;
 }
 
 .read-container {
@@ -166,6 +167,7 @@ select::-ms-expand {
 	margin-bottom: 1rem;
 	letter-spacing: -.05rem;
 	border-radius: 4px;
+	margin-bottom: 0.25rem;
 }
 
 .speedread ol {
