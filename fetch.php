@@ -9,6 +9,10 @@ $user_pref_langs2 = explode('-', $user_pref_langs);
 $hl = strtolower($user_pref_langs2[0]);
 $gl = strtoupper($user_pref_langs2[1]);
 
+if($gl === 'ES') {
+  $gl = 'AR';
+}
+
 if ($source === 'google') {
   $url = "https://news.google.com/rss?hl=${hl}&gl=${gl}&ceid=${gl}:${hl}";
   // $url = "dummy.xml";
