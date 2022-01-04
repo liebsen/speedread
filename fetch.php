@@ -30,8 +30,8 @@ if ($type === 'geo') {
   }
 }
 
-error_log("server_accept_language: " . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-error_log("url: ${url}");
+var_dump("server_accept_language: " . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+var_dump("url: ${url}");
 $string = file_get_contents("${url}");
 if($string === FALSE) {
   echo "error";
