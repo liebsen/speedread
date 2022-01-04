@@ -23,13 +23,13 @@ function handleGesture() {
 
     if (absX > touchOffset) {
         if (touchendX <= touchstartX) {
-            // console.log('Swiped left');
-            prevRead()
+            // console.log('Swiped left');            
+            nextRead()
         }
         
         if (touchendX >= touchstartX) {
             // console.log('Swiped right');
-            nextRead()
+            prevRead()            
         }
     }
 
