@@ -32,6 +32,8 @@ if ($type === 'geo') {
 
 var_dump("server_accept_language: " . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 var_dump("url: ${url}");
+die();
+
 $string = file_get_contents("${url}");
 if($string === FALSE) {
   echo "error";
