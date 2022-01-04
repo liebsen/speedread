@@ -30,6 +30,7 @@ if ($type === 'geo') {
   }
 }
 
+error_log("url: ${url}");
 $string = file_get_contents("${url}");
 if($string === FALSE) {
   echo "error";
