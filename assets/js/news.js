@@ -1,5 +1,6 @@
 let items = []
 let index = 0
+let lastIndex = 0
 let pause = 0
 let interval = 0
 const progressContainer = document.querySelector('.progress-container')
@@ -45,18 +46,20 @@ let cycle = () => {
   }
 
   const item = items[index]
-  document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
-  document.querySelector('.speedread').classList.add('fadeOutLeft')
+  const lr_from = lastIndex < index ? 'Left' : 'Right'
+  const lr_to = lastIndex < index ? 'Right' : 'Left'
+  document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft', 'fadeInLeft', 'fadeOutRight')
+  document.querySelector('.speedread').classList.add(`fadeOut${lr_from}`)
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   document.querySelector('.updated').classList.add('fadeOut')
   if (index) {
     document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   }
   cycleInt = setTimeout(() => {
-    if (item) {      
-      document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft')
+    if (item) {
+      document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft', 'fadeInLeft', 'fadeOutRight')
       document.querySelector('.speedread').innerHTML = `${item.description}`
-      document.querySelector('.speedread').classList.add('fadeInRight')
+      document.querySelector('.speedread').classList.add(`fadeIn${lr_to}`)
       document.querySelector('.updated').classList.add('fadeIn')
       document.querySelectorAll('.progress').forEach(e => {
         e.classList.remove('active', 'actived')
@@ -65,9 +68,10 @@ let cycle = () => {
         document.querySelector('.progress.item-' + i).classList.add('actived')
       }
       document.querySelector('.progress.item-' + index).classList.add('active')
-      index++
+      lastIndex = index
+      index++      
     }
-  }, 1000)  
+  }, 500)  
 }
 
 let search = () => {
