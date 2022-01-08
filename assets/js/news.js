@@ -32,9 +32,6 @@ let playsound = (sound, vol) => {
 let cycleInt = 0
 
 let cycle = () => {
-  if (cycleInt) {
-    clearInterval(cycleInt)
-  }
   if (index && pause) {
     return false
   }
@@ -55,6 +52,9 @@ let cycle = () => {
   if (index) {
     document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
   }
+  if (cycleInt) {
+    clearInterval(cycleInt)
+  }  
   cycleInt = setTimeout(() => {
     if (item) {
       document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft', 'fadeInLeft', 'fadeOutRight')
@@ -62,14 +62,23 @@ let cycle = () => {
       document.querySelector('.speedread').classList.add(`fadeIn${lr_to}`)
       document.querySelector('.updated').classList.add('fadeIn')
       document.querySelectorAll('.progress').forEach(e => {
-        e.classList.remove('active', 'actived')
+        e.classList.remove('reset', 'active', 'actived')
       })
       for (var i=0;i<index;i++) {
         document.querySelector('.progress.item-' + i).classList.add('actived')
       }
-      document.querySelector('.progress.item-' + index).classList.add('active')
-      lastIndex = index
-      index++      
+      setTimeout(() => {
+        document.querySelector('.progress.item-' + index).classList.remove('reset')
+        document.querySelector('.progress.item-' + index).classList.add('active')
+      }, 1)
+      setTimeout(() => {
+        lastIndex = index
+        index++
+        if (interval) {
+          clearInterval(interval)
+        }
+        interval = setTimeout(cycle, speed * 1000)   
+      }, 10)
     }
   }, 500)  
 }
@@ -138,7 +147,6 @@ let nextRead = () => {
 
 let startCycle = () => {
   progressItems()
-  interval = setInterval(cycle, speed * 1000)
   cycle()
 }
 

@@ -217,8 +217,17 @@ select::-ms-expand {
 }
 
 .progress.active {
-	width: 100%;
-	transition: width 15s linear;
+	animation: segment 15s linear;
+}
+
+@keyframes segment {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 .icon {
