@@ -204,19 +204,20 @@ select::-ms-expand {
 .progress {
 	height: 5px;
 	background-color: whitesmoke;
-	width: 0%;
 	border-radius: 4px;
+	opacity: 0;
 	/* transition-property: width;
 	transition-timing-function: linear;
 	transition-duration: 15s;*/
 }
 
-.progress.actived {
+.progress.reset {
+	opacity: 1;
 	width: 100%;
-	transition: none;
 }
 
 .progress.active {
+	opacity: 1;
 	animation: segment 15s linear;
 }
 

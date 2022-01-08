@@ -62,13 +62,13 @@ let cycle = () => {
       document.querySelector('.speedread').classList.add(`fadeIn${lr_to}`)
       document.querySelector('.updated').classList.add('fadeIn')
       document.querySelectorAll('.progress').forEach(e => {
-        e.classList.remove('reset', 'active', 'actived')
+        e.classList.remove('active', 'reset')
       })
       for (var i=0;i<index;i++) {
-        document.querySelector('.progress.item-' + i).classList.add('actived')
+        document.querySelector('.progress.item-' + i).classList.add('reset')
       }
       setTimeout(() => {
-        document.querySelector('.progress.item-' + index).classList.remove('reset')
+        // document.querySelector('.progress.item-' + index).classList.remove('reset')
         document.querySelector('.progress.item-' + index).classList.add('active')
       }, 1)
       setTimeout(() => {
