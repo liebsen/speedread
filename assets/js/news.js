@@ -67,8 +67,9 @@ let cycle = () => {
   }  
   cycleInt = setTimeout(() => {
     if (item) {
+      const fromnow = moment(item.pubDate).fromNow()
       document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft', 'fadeInLeft', 'fadeOutRight')
-      document.querySelector('.speedread').innerHTML = `${item.description}`
+      document.querySelector('.speedread').innerHTML = `${item.description} <div class="speedread-date">${fromnow}</div>`
       document.querySelector('.speedread').classList.add(`fadeIn${lr_to}`)
       document.querySelector('.updated').classList.add('fadeIn')
       document.querySelectorAll('.progress').forEach(e => {
@@ -90,7 +91,7 @@ let cycle = () => {
         interval = setTimeout(cycle, speed * 1000)   
       }, 10)
     }
-  }, 500)  
+  }, 250)  
 }
 
 let search = () => {

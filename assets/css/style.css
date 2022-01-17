@@ -236,6 +236,13 @@ select::-ms-expand {
 	margin-bottom: 0.25rem;
 }
 
+.speedread-date {
+	font-size: 1rem;
+	text-align: right;
+	padding-top: 0.75rem;
+	color: wheat;
+}
+
 .speedread ol {
 	margin: 0;
 }
