@@ -188,7 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (id === 'topstories') {
         toggleCntrs()  
         search()
-      }      
+      } else {
+        document.getElementById('keyword').focus()
+      }
     })
   })
 

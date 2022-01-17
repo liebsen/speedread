@@ -151,12 +151,17 @@ select::-ms-expand {
 }
 
 .controls {
+	pointer-events: none;
 	background-color: black;
 	opacity: 0.9;
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
 	z-index: 1;
+}
+
+.controls.scaleIn {
+	pointer-events: auto;
 }
 
 .controls form {
@@ -199,7 +204,7 @@ select::-ms-expand {
 	margin: 0 1rem;
 	cursor: pointer;
 	color: white;
-	transition: color 0.5s ease-in-out;
+	transition: color 0.2s ease-in-out;
 }
 
 .select-mode.selected {
