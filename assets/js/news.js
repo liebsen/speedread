@@ -5,7 +5,7 @@ let pause = 0
 let interval = 0
 const progressContainer = document.querySelector('.progress-container')
 const speed = 15
-let preferences = localStorage.getItem('preferences') ? JSON.parse(localStorage.getItem('preferences')) : { mode: 'topstories', keyword: null }
+let preferences = localStorage.getItem('preferences') ? JSON.parse(localStorage.getItem('preferences')) : { mode: 'topstories', keyword: '' }
 let updateLast = new Date()
 
 let playsound = (sound, vol) => {
@@ -97,7 +97,7 @@ let cycle = () => {
 let search = () => {
   const source = 'google'
   // const source = document.getElementById('source').value || 'google'
-  const key = document.getElementById('key').value || ''
+  const keyword = document.getElementById('keyword').value || preferences.keyword
   document.querySelector('.progress-container').innerHTML = ''
   document.querySelector('.read-container').classList.remove('hidden')
   document.querySelector('.speedread').innerHTML = 'Fetching news...'
@@ -109,7 +109,7 @@ let search = () => {
   if (interval) {
     clearInterval(interval)
   }
-  $.get(`fetch.php?source=${source}&mode=${preferences.mode}&key=${key}`, function (data) {
+  $.get(`fetch.php?source=${source}&mode=${preferences.mode}&keyword=${keyword}`, function (data) {
     if (data === 'error') {
       playsound('error.mp3')
       if (items.length) {
@@ -207,6 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.updated').textContent = 'Updated ' + moment(updateLast).fromNow()
   }, 1000 * 15)
   document.querySelector(`[data-id="${preferences.mode}"]`).classList.add('selected')
+  if (preferences.keyword.length) {
+    document.getElementById('keyword').value = preferences.keyword
+  }
   search()
 })
 

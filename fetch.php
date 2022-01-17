@@ -1,6 +1,6 @@
 <?php 
 
-$key = urlencode(strtolower($_GET['key']));
+$keyword = urlencode(strtolower($_GET['keyword']));
 $mode = strtolower($_GET['mode']);
 $source = strtolower($_GET['source']);
 
@@ -17,20 +17,20 @@ if ($source === 'google') {
   $url = "https://news.google.com/rss?hl=${hl}&gl=${gl}&ceid=${gl}:${hl}";
   // $url = "dummy.xml";
 } else if ($source === 'bing') {
-  $url = "https://www.bing.com/news/results.aspx?setLang=${user_pref_langs}&q=${key}&format=rss";
+  $url = "https://www.bing.com/news/results.aspx?setLang=${user_pref_langs}&q=${keyword}&format=rss";
 }
 
 if ($mode === 'geo') {
   if ($source === 'google') {
-    $url = "https://news.google.com/news/rss/headlines/section/geo/${key}";
+    $url = "https://news.google.com/news/rss/headlines/section/geo/${keyword}";
   } else if ($source === 'bing') {
-    $url = "https://www.bing.com/news/results.aspx?q=${key}&format=rss";
+    $url = "https://www.bing.com/news/results.aspx?q=${keyword}&format=rss";
   }
-} else if ($mode === 'keyword') {
+} else if ($mode === 'keywordword') {
   if ($source === 'google') {
-    $url = "https://news.google.com/rss/search?q=${key}&hl=${user_pref_langs}";
+    $url = "https://news.google.com/rss/search?q=${keyword}&hl=${user_pref_langs}";
   } else if ($source === 'bing') {
-    $url = "https://www.bing.com/news/results.aspx?q=${key}&format=rss";
+    $url = "https://www.bing.com/news/results.aspx?q=${keyword}&format=rss";
   }
 }
 
