@@ -202,14 +202,21 @@ select::-ms-expand {
 }
 
 .select-mode {
+	display: inline-block;
 	margin: 0 1rem;
 	cursor: pointer;
-	color: white;
-	transition: color 0.2s ease-in-out;
+	color: aqua;
+	height: 2.75rem;
+	line-height: 2.75rem;
+	padding: 0 0.825rem;
+	border: 3px solid aqua;
+	border-radius: 0.25rem;
+	transition: all 0.2s ease-in-out;
 }
 
 .select-mode.selected {
 	color: wheat;
+	border-color: wheat;
 }
 
 .read-container {
@@ -247,10 +254,16 @@ select::-ms-expand {
 }
 
 .progress-container {
+	display: none;
+	opacity: 0;
 	height: 0.5rem;
 	position: relative;
 	top: 0;
 	margin-bottom: 0.5rem;
+}
+
+.progress-container.show {
+	display: flex;
 }
 
 .progress-item {

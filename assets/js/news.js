@@ -97,6 +97,7 @@ let search = () => {
   const source = 'google'
   // const source = document.getElementById('source').value || 'google'
   const keyword = document.getElementById('keyword').value || preferences.keyword
+  document.querySelector('.progress-container').classList.remove('fadeOut', 'fadeIn', 'show')
   document.querySelector('.progress-container').innerHTML = ''
   document.querySelector('.read-container').classList.remove('hidden')
   document.querySelector('.speedread').innerHTML = 'Fetching news...'
@@ -130,6 +131,7 @@ let search = () => {
       if (!items.length) {
         document.querySelector('.speedread').innerHTML = 'No results for this search. Try again with another keyword.'
       } else {
+        document.querySelector('.progress-container').classList.add('fadeIn', 'show')
         playsound('updated.mp3')
         updateLast = new Date()
         startCycle()
