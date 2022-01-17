@@ -1,7 +1,11 @@
+html {
+	overflow-x: hidden;
+}
+
 body {
 	padding: 0;
 	background-color: black;
-	color: whitesmoke;
+	color: wheat;
 	font-family: 'Graphik 800';
 	overflow-x: hidden;
 }
@@ -70,13 +74,16 @@ textarea {
 	-ms-appearance: none;
 	appearance: none;
 	background-color: transparent;
-	border-radius: 4px;
+	border-radius: 0.25rem;
 	border: none;
-	border: solid 1px;
+	border: solid aqua 3px;
+	color: aqua;
+	font-size: 1rem;
 	color: inherit;
 	display: block;
 	outline: 0;
 	padding: 0 0.825rem;
+	margin: auto;
 	text-decoration: none;
 }
 
@@ -126,6 +133,41 @@ select::-ms-expand {
 	display: none;
 }
 
+.controls-toggle {
+	position: fixed;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.controls-toggle svg {
+	width: 4rem;
+	height: 3rem;
+}
+
+.controls-toggle svg path {
+	fill: brown;
+}
+
+.controls {
+	background-color: black;
+	opacity: 0.9;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1;
+}
+
+.controls form {
+	justify-content: center;
+}
+
+.field {
+	padding: 1rem 0;
+	text-align: center;
+}
+
 .icon {
 	font-family:"Font Awesome";
 }
@@ -151,6 +193,15 @@ select::-ms-expand {
 	text-align: right;
 	opacity: 0;
 	padding-right: 0.25rem;
+}
+
+.select-mode {
+	margin: 0 1rem;
+	cursor: pointer;
+}
+
+.select-mode.selected {
+	color: white;
 }
 
 .read-container {
@@ -183,27 +234,28 @@ select::-ms-expand {
 }
 
 .speedread a {
-	color: whitesmoke;
+	color: wheat;
 	text-decoration: none;
 }
 
 .progress-container {
-	height: 5px;
+	height: 0.5rem;
 	position: relative;
-	top: -0.25rem;
+	top: 0;
+	margin-bottom: 0.5rem;
 }
 
 .progress-item {
 	flex: 1;
-	height: 5px;
+	height: 0.5rem;
 	background-color: #333;
 	border-radius: 4px;
 	margin: 0 1px;
 }
 
 .progress {
-	height: 5px;
-	background-color: whitesmoke;
+	height: 0.5rem;
+	background-color: wheat;
 	border-radius: 4px;
 	opacity: 0;
 	/* transition-property: width;

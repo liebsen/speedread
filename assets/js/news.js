@@ -5,6 +5,7 @@ let pause = 0
 let interval = 0
 const progressContainer = document.querySelector('.progress-container')
 const speed = 15
+let preferences = localStorage.getItem('preferences') ? JSON.parse(localStorage.getItem('preferences')) : { mode: 'topstories', keyword: null }
 let updateLast = new Date()
 
 let playsound = (sound, vol) => {
@@ -29,8 +30,18 @@ let playsound = (sound, vol) => {
     }
   }
 }
-let cycleInt = 0
 
+let setmode = mode => {
+  console.log('set mode :' + mode)
+  document.querySelectorAll('.select-mode').forEach(e => {
+    e.classList.remove('selected')
+  })
+  document.querySelector(`[data-id="${mode}"]`).classList.add('selected')
+  preferences.mode = mode
+  localStorage.setItem('preferences', JSON.stringify(preferences))
+}
+
+let cycleInt = 0
 let cycle = () => {
   if (index && pause) {
     return false
@@ -86,7 +97,6 @@ let cycle = () => {
 let search = () => {
   const source = 'google'
   // const source = document.getElementById('source').value || 'google'
-  const type = document.getElementById('type').value || 'language'
   const key = document.getElementById('key').value || ''
   document.querySelector('.progress-container').innerHTML = ''
   document.querySelector('.read-container').classList.remove('hidden')
@@ -99,7 +109,7 @@ let search = () => {
   if (interval) {
     clearInterval(interval)
   }
-  $.get(`fetch.php?source=${source}&type=${type}&key=${key}`, function (data) {
+  $.get(`fetch.php?source=${source}&mode=${preferences.mode}&key=${key}`, function (data) {
     if (data === 'error') {
       playsound('error.mp3')
       if (items.length) {
@@ -150,16 +160,41 @@ let startCycle = () => {
   cycle()
 }
 
+let toggleCntrs = () => {
+  document.querySelector('.controls').classList.toggle('scaleIn')
+  document.querySelector('.controls').classList.toggle('scaleOut')  
+}
 let progressItems = () => {
   for(var i =0; i <= items.length - 1; i++) {
     document.querySelector('.progress-container').innerHTML+=`<div class="progress-item" onclick="index=${i};cycle()"><div class="progress item-${i}"></div></div>`
   }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.controls').classList.add('fadeInDown')
+  // document.querySelector('.controls').classList.add('fadeInDown')
+  document.querySelector('.controls form').addEventListener('submit', e => {
+    toggleCntrs()
+  })
+  document.querySelector('.controls-toggle').addEventListener('click', e => {
+    toggleCntrs()
+  })
+
+  document.querySelectorAll('.select-mode').forEach(e => {
+    console.log(e)
+    e.addEventListener('click', e => {
+      console.log('click')
+      const id = e.target.getAttribute('data-id')
+      setmode(id)
+      if (id === 'topstories') {
+        toggleCntrs()  
+        search()
+      }      
+    })
+  })
+
   document.querySelector('.speedread').addEventListener('click', e => {
-    document.querySelector('.controls').classList.toggle('fadeInDown')
-    document.querySelector('.controls').classList.toggle('fadeOutUp')
+    //document.querySelector('.controls').classList.toggle('fadeInDown')
+    //document.querySelector('.controls').classList.toggle('fadeOutUp')
     let int = 1
     if(!document.querySelector('.controls').classList.contains('hidden')) {
       int = 500
@@ -171,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(() => {
     document.querySelector('.updated').textContent = 'Updated ' + moment(updateLast).fromNow()
   }, 1000 * 15)
+  document.querySelector(`[data-id="${preferences.mode}"]`).classList.add('selected')
   search()
 })
 
