@@ -32,7 +32,6 @@ let playsound = (sound, vol) => {
 }
 
 let setmode = mode => {
-  console.log('set mode :' + mode)
   document.querySelectorAll('.select-mode').forEach(e => {
     e.classList.remove('selected')
   })
@@ -180,9 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   document.querySelectorAll('.select-mode').forEach(e => {
-    console.log(e)
     e.addEventListener('click', e => {
-      console.log('click')
       const id = e.target.getAttribute('data-id')
       setmode(id)
       if (id === 'topstories') {
