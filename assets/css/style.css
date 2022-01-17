@@ -170,8 +170,10 @@ select::-ms-expand {
 }
 
 .field {
-	padding: 1rem 0;
+	display: flex;
+	padding: 0.25rem 0;
 	text-align: center;
+	grid-gap: 0.5rem;
 }
 
 .icon {
@@ -203,7 +205,6 @@ select::-ms-expand {
 
 .select-mode {
 	display: inline-block;
-	margin: 0 1rem;
 	cursor: pointer;
 	color: aqua;
 	height: 2.75rem;
