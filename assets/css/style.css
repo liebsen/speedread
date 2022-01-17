@@ -134,6 +134,7 @@ select::-ms-expand {
 }
 
 .controls-toggle {
+	pointer-events: auto;
 	position: fixed;
 	bottom: 0.5rem;
 	right: 0.5rem;
