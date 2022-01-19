@@ -248,7 +248,7 @@ select::-ms-expand {
 	margin: 0;
 }
 .speedread li {
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 }
 .speedread span {
 	display: inline-block;
