@@ -80,7 +80,9 @@ let cycle = () => {
       }
       setTimeout(() => {
         // document.querySelector('.progress.item-' + index).classList.remove('reset')
-        document.querySelector('.progress.item-' + index).classList.add('active')
+        if (document.querySelector('.progress.item-' + index)) {
+          document.querySelector('.progress.item-' + index).classList.add('active')
+        }
       }, 1)
       setTimeout(() => {
         lastIndex = index
