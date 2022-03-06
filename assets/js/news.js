@@ -48,6 +48,9 @@ let cycle = () => {
   if (index < 0) {
     index = 0
   }
+  console.log(index)
+  console.log(items.length - 1)
+  console.log('----')
   if (index > items.length - 1) {
     return search()
   }
@@ -165,6 +168,7 @@ let startCycle = () => {
 }
 
 let toggleCntrs = () => {
+  document.querySelector('.controls-toggle').classList.toggle('hidden')
   document.querySelector('.controls').classList.toggle('scaleIn')
   document.querySelector('.controls').classList.toggle('scaleOut')  
 }
