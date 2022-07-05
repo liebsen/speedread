@@ -5,7 +5,7 @@ html {
 body {
 	padding: 0;
 	background-color: black;
-	color: #479b0e;
+	color: white;
 	font-family: 'Graphik 800';
 	overflow-x: hidden;
 }
@@ -216,8 +216,8 @@ select::-ms-expand {
 }
 
 .select-mode.selected {
-	color: #479b0e;
-	border-color: #479b0e;
+	color: white;
+	border-color: white;
 }
 
 .read-container {
@@ -241,7 +241,7 @@ select::-ms-expand {
 	font-size: 1rem;
 	text-align: right;
 	padding-top: 0.75rem;
-	color: #479b0e;
+	color: white;
 }
 
 .speedread ol {
@@ -257,7 +257,7 @@ select::-ms-expand {
 }
 
 .speedread a {
-	color: #479b0e;
+	color: white;
 	text-decoration: none;
 }
 
