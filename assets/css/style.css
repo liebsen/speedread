@@ -6,12 +6,12 @@ body {
 	padding: 0;
 	background-color: black;
 	color: whitesmoke;
-	font-family: 'Graphik 800';
+	font-family: -apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
 	overflow-x: hidden;
 }
 
 input, select, button {
-	font-family: 'Graphik 800';
+	font-family: -apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
 }
 
 fieldset {
