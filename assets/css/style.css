@@ -279,6 +279,7 @@ select::-ms-expand {
 
 .speedread li font {
 	color: white!important;
+	font-weight: 800;
 }
 
 .speedread span {
@@ -288,7 +289,7 @@ select::-ms-expand {
 }
 
 .speedread a {
-	color: whitesmoke;
+	color: white;
 	text-decoration: none;
 }
 
