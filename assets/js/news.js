@@ -1,4 +1,4 @@
-let colors = ['#00D1B2', '#209CEE', '#323edd', '#639a67', '#084177', '#fe346e', '#323edd', '#f688bb', '#79bac1', '#ffa41b', '#be8abf', '#f0134d', '#7fa998', '#12cad6', '#91bd3a']
+//let colors = ['#00D1B2', '#209CEE', '#323edd', '#639a67', '#084177', '#fe346e', '#323edd', '#f688bb', '#79bac1', '#ffa41b', '#be8abf', '#f0134d', '#7fa998', '#12cad6', '#91bd3a']
 let items = []
 let index = 0
 let lastIndex = 0
@@ -172,7 +172,8 @@ let toggleSearch = () => {
   document.querySelector('.form').classList.toggle('scaleOut')  
 }
 let togglePalette = () => {
-  var selected = colors[Math.floor(Math.random() * colors.length)]
+  //var selected = colors[Math.floor(Math.random() * colors.length)]
+  var selected = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
   document.querySelector('body').style.backgroundColor = selected
   localStorage.setItem('bg', selected)
 }
