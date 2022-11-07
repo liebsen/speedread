@@ -255,7 +255,7 @@ select::-ms-expand {
 	font-size: 1.25rem;
 	background-color: #fff3;
 	color: white!important;
-	padding: 1rem;
+	padding: 1.5rem;
 	opacity: 0;
 	margin-bottom: 1rem;
 	letter-spacing: -.05rem;
@@ -362,13 +362,22 @@ select::-ms-expand {
 }
 
 @media screen and (min-width: 769px) {
+	.progress-container.show {
+		width: calc(100% - 1rem);
+	}
   .read-container {
   	display: flex;
+  	position: absolute;
+  	left: 0;
+  	right: 0;
+  	top: 0;
+  	bottom: 1rem;
   	flex-direction: column;
   	justify-content: center;
   	align-items: center;
   	padding-top: 0;
-  	height: 95vh;
+  	padding-right: 7rem;
+  	padding-bottom: 7rem;
     transform: scale(0.75) perspective(1024px) rotateY(-10deg) rotateX(3deg) rotate(3deg) translateY(0rem) translateX(-2rem);
   }
   .speedread {
