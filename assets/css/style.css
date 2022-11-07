@@ -8,6 +8,7 @@ body {
 	color: whitesmoke;
 	font-family: -apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
 	overflow-x: hidden;
+	transition: all 1s ease-in-out;
 }
 
 input, select, button {
@@ -133,39 +134,63 @@ select::-ms-expand {
 	display: none;
 }
 
-.controls-toggle {
-	pointer-events: auto;
+.controls {
+	justify-content: flex-end;
 	position: fixed;
+	grid-gap: 1.25rem;
+	z-index: 2;
 	bottom: 0.5rem;
 	right: 0.5rem;
-	cursor: pointer;
-	z-index: 2;
 }
 
-.controls-toggle svg {
-	width: 4rem;
+.controls-search {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.controls-search svg {
+	width: 3rem;
 	height: 3rem;
 }
 
-.controls-toggle svg path {
+.controls-search svg path {
 	fill: white;
 }
 
-.controls {
+.controls-palette {
+	pointer-events: auto;
+	cursor: pointer;
+	transform: rotate(165deg);
+	position: relative;
+	top: -0.5rem;
+}
+
+.controls-palette svg {
+	width: 2.25rem;
+	height: 2.25rem;
+}
+
+.controls-palette svg path {
+	fill: white;
+}
+
+.form {
 	pointer-events: none;
 	background-color: black;
 	opacity: 0.9;
 	position: fixed;
+	left: 0;
+	top: 0;
 	width: 100vw;
 	height: 100vh;
 	z-index: 1;
 }
 
-.controls.scaleIn {
+.form.scaleIn {
 	pointer-events: auto;
 }
 
-.controls form {
+.form form {
 	justify-content: center;
 }
 
@@ -197,7 +222,7 @@ select::-ms-expand {
 }
 
 .updated {
-	color: #666;
+	color: whitesmoke;
 	text-align: right;
 	opacity: 0;
 	padding-right: 0.25rem;
@@ -228,13 +253,14 @@ select::-ms-expand {
 
 .speedread {
 	font-size: 1.25rem;
-	background-color: #333;
+	background-color: #fff3;
+	color: white!important;
 	padding: 1rem;
 	opacity: 0;
 	margin-bottom: 1rem;
 	letter-spacing: -.05rem;
-	border-radius: 4px;
-	margin-bottom: 0.25rem;
+	border-radius: 1rem;
+	margin-bottom: 0.5rem;
 }
 
 .speedread-date {
@@ -250,6 +276,11 @@ select::-ms-expand {
 .speedread li {
 	margin-bottom: 0.5rem;
 }
+
+.speedread li font {
+	color: white!important;
+}
+
 .speedread span {
 	display: inline-block;
 	width: 100%;
@@ -272,20 +303,21 @@ select::-ms-expand {
 
 .progress-container.show {
 	display: flex;
+	width: 100%;
 }
 
 .progress-item {
 	flex: 1;
-	height: 0.25rem;
-	background-color: #333;
-	border-radius: 4px;
-	margin: 0 1px;
+	height: 0.5rem;
+	background-color: #fff3;
+	border-radius: 1rem;
+	margin: 0 2px;
 }
 
 .progress {
-	height: 0.25rem;
-	background-color: #479b0e;
-	border-radius: 4px;
+	height: 0.5rem;
+	background-color: #fffc;
+	border-radius: 1rem;
 	opacity: 0;
 	/* transition-property: width;
 	transition-timing-function: linear;
@@ -327,6 +359,21 @@ select::-ms-expand {
 
 .hidden {
 	display: none;
+}
+
+@media screen and (min-width: 769px) {
+  .read-container {
+  	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+  	padding-top: 0;
+  	height: 95vh;
+    transform: scale(0.75) perspective(1024px) rotateY(-10deg) rotateX(3deg) rotate(3deg) translateY(0rem) translateX(-2rem);
+  }
+  .speedread {
+    box-shadow: 1px 1px 5px 0 rgba(26, 26, 67, .05), 39px 62.5px 125px -25px rgba(50, 50, 93, .2), 23.4px 37.5px 75px -37.5px rgba(0, 0, 0, .4);
+  }
 }
 
 @media (min-width: 960px) {

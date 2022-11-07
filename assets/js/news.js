@@ -1,3 +1,4 @@
+let colors = ['#00D1B2', '#209CEE', '#323edd', '#639a67', '#084177', '#fe346e', '#323edd', '#f688bb', '#79bac1', '#ffa41b', '#be8abf', '#f0134d', '#7fa998', '#12cad6', '#91bd3a']
 let items = []
 let index = 0
 let lastIndex = 0
@@ -48,9 +49,6 @@ let cycle = () => {
   if (index < 0) {
     index = 0
   }
-  console.log(index)
-  console.log(items.length - 1)
-  console.log('----')
   if (index > items.length - 1) {
     return search()
   }
@@ -58,6 +56,7 @@ let cycle = () => {
   const item = items[index]
   const lr_from = lastIndex < index ? 'Left' : 'Right'
   const lr_to = lastIndex < index ? 'Right' : 'Left'
+
   document.querySelector('.speedread').classList.remove('fadeInRight', 'fadeOutLeft', 'fadeInLeft', 'fadeOutRight')
   document.querySelector('.speedread').classList.add(`fadeOut${lr_from}`)
   document.querySelector('.updated').classList.remove('fadeIn', 'fadeOut')
@@ -167,11 +166,17 @@ let startCycle = () => {
   cycle()
 }
 
-let toggleCntrs = () => {
-  document.querySelector('.controls-toggle').classList.toggle('hidden')
-  document.querySelector('.controls').classList.toggle('scaleIn')
-  document.querySelector('.controls').classList.toggle('scaleOut')  
+let toggleSearch = () => {
+  document.querySelector('.controls-search').classList.toggle('hidden')
+  document.querySelector('.form').classList.toggle('scaleIn')
+  document.querySelector('.form').classList.toggle('scaleOut')  
 }
+let togglePalette = () => {
+  var selected = colors[Math.floor(Math.random() * colors.length)]
+  document.querySelector('body').style.backgroundColor = selected
+  localStorage.setItem('bg', selected)
+}
+
 let progressItems = () => {
   for(var i =0; i <= items.length - 1; i++) {
     document.querySelector('.progress-container').innerHTML+=`<div class="progress-item" onclick="index=${i};cycle()"><div class="progress item-${i}"></div></div>`
@@ -179,12 +184,18 @@ let progressItems = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // document.querySelector('.controls').classList.add('fadeInDown')
-  document.querySelector('.controls form').addEventListener('submit', e => {
-    toggleCntrs()
+  if (localStorage.getItem('bg')) {
+    document.querySelector('body').style.backgroundColor = localStorage.getItem('bg')
+  }
+  // document.querySelector('.form').classList.add('fadeInDown')
+  document.querySelector('.form form').addEventListener('submit', e => {
+    toggleSearch()
   })
-  document.querySelector('.controls-toggle').addEventListener('click', e => {
-    toggleCntrs()
+  document.querySelector('.controls-search').addEventListener('click', e => {
+    toggleSearch()
+  })
+  document.querySelector('.controls-palette').addEventListener('click', e => {
+    togglePalette()
   })
 
   document.querySelectorAll('.select-mode').forEach(e => {
@@ -192,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const id = e.target.getAttribute('data-id')
       setmode(id)
       if (id === 'topstories') {
-        toggleCntrs()  
+        toggleSearch()  
         search()
       } else {
         document.getElementById('keyword').focus()
@@ -201,14 +212,14 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   document.querySelector('.speedread').addEventListener('click', e => {
-    //document.querySelector('.controls').classList.toggle('fadeInDown')
-    //document.querySelector('.controls').classList.toggle('fadeOutUp')
+    //document.querySelector('.form').classList.toggle('fadeInDown')
+    //document.querySelector('.form').classList.toggle('fadeOutUp')
     let int = 1
-    if(!document.querySelector('.controls').classList.contains('hidden')) {
+    if(!document.querySelector('.form').classList.contains('hidden')) {
       int = 500
     }
     setTimeout(() => {
-      document.querySelector('.controls').classList.toggle('hidden')
+      document.querySelector('.form').classList.toggle('hidden')
     }, int)
   })
   setInterval(() => {

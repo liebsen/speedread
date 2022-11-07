@@ -8,14 +8,15 @@ $user_pref_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
 $user_pref_langs2 = explode('-', $user_pref_langs);
 $hl = strtolower($user_pref_langs2[0]);
 $gl = strtoupper($user_pref_langs2[1]);
+$dev = $_SERVER['REMOTE_ADDR'] == '127.0.0.1';
 
 if($gl === 'ES') {
   $gl = 'AR';
 }
 
 if ($source === 'google') {
-  $url = "https://news.google.com/rss?hl=${hl}&gl=${gl}&ceid=${gl}:${hl}";
-  // $url = "dummy.xml";
+  // avoid fetching in develope environment
+  $url = $dev ? "dummy.xml" : "https://news.google.com/rss?hl=${hl}&gl=${gl}&ceid=${gl}:${hl}"; 
 } else if ($source === 'bing') {
   $url = "https://www.bing.com/news/results.aspx?setLang=${user_pref_langs}&q=${keyword}&format=rss";
 }
