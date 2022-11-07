@@ -375,12 +375,12 @@ select::-ms-expand {
   	flex-direction: column;
   	justify-content: center;
   	align-items: center;
-  	padding-top: 0;
+  	padding: 0.25rem;
     transform: scale(0.75) perspective(1024px) rotateY(-10deg) rotateX(3deg) rotate(3deg) translateY(0rem) translateX(-2rem);
     overflow-y: hidden;
   }
   .speedread {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   }
 }
 
