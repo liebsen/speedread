@@ -8,7 +8,7 @@ $user_pref_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
 $user_pref_langs2 = explode('-', $user_pref_langs);
 $hl = strtolower($user_pref_langs2[0]);
 $gl = strtoupper($user_pref_langs2[1]);
-$dev = $_SERVER['REMOTE_ADDR'] == '127.0.0.1';
+$dev = $_SERVER['REMOTE_ADDR'] == '127.0.0.11';
 
 if($gl === 'ES') {
   $gl = 'AR';
